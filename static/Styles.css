@@ -1,0 +1,654 @@
+:root {
+    --main-bg-color: #e5e7eb;
+    --dark-bg-color: #0a0a0a;
+    --nobg-text-color: #0a0a0a;
+    --main-text-color: #e5e7eb;
+    --modal-bg-color : rgb(229, 231, 235);
+    --line-color:rgba(0,191,255,0.5);
+    --forest-color: #98b23f;
+    --mountain-color: #d4854c;
+    --water-color: #4c76a9;
+    --main-button-color: #d4af37;
+    --biomes-superior-value-color: #ffd652;
+    --biomes-inferior-value-color: var(--main-text-color);
+    --default-body-font-size : 30px;
+    --zoomIn-button : url("Assets/zoomIn_light.svg");
+    --zoomOut-button : url("Assets/zoomOut_light.svg");
+    --cross-button : url("Assets/cross_light.svg");
+    --radioButton-border-color:#0a0a0a;
+}
+
+
+:root.darkMode {
+    --main-bg-color: #0a0a0a;
+    --nobg-text-color: #e5e7eb;
+    --zoomIn-button : url("Assets/zoomIn_dark.svg");
+    --zoomOut-button : url("Assets/zoomOut_dark.svg");
+    --cross-button : url("Assets/cross_dark.svg");
+    --modal-bg-color : rgb(0, 0, 0);
+    --radioButton-border-color:#e5e7eb;
+}
+
+
+.adaptiveColorText {
+    color : var(--nobg-text-color)
+}
+
+* {
+    margin: 0;
+    font-family: "Protest Strike", sans-serif;
+}
+
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    -webkit-tap-highlight-color:transparent;
+    color : var(--main-text-color);
+    font-size: var(--default-body-font-size);
+    height: 100dvh;
+    background-color:  var(--main-bg-color);
+}
+
+#portraitModeWarning {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    color: black;
+    text-shadow: none;
+}
+
+#app {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.fullHeight {
+    height: 100%;
+}
+
+.fullSize {
+    width: 100%;
+    height: 100%;
+}
+
+.flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexSpaceAround {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flexSpaceBetween {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flexSpaceEvenly {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.closeModalButton {
+    cursor: pointer;
+    position: absolute;
+    top:1em;
+    right: 1em;
+}
+
+#settings {
+    font-size: 0.9em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#soloPlayer {
+    margin-top: 1.25em;
+    row-gap: 0.75em;
+}
+
+.modal {
+    scale: 0;
+    z-index: 999;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-bg-color);
+    transition: scale 0.15s ease-in-out;
+}
+
+.zoomButton {
+    cursor: pointer;
+    transition: scale .2s ease;
+}
+
+.zoomButton:active {
+    transform: scale(1.1);
+    transition: .1s;
+}
+
+.zoomButton.inactive:active {
+    transform: none;
+}
+
+.inactive {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.modalContainer {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#AddCharacterModal {
+    font-size: 2em;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: flex;
+}
+
+.validateCharacterTop {
+    position: absolute;
+    left: 1em;
+}
+
+.validateCharacterBottom {
+    position: absolute;
+    right: 1em;
+}
+
+.playerSide {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.biomesIconTop {
+    position: absolute;
+    top: 25%;
+    left: 80%;
+    transform: translate(-50%, -50%) scale(-1,-1);
+    -webkit-transform: translate(-50%, -50%) scale(-1,-1);
+}
+
+.biomesIconBottom {
+    position: absolute;
+    bottom: 25%;
+    right: 80%;
+    transform: translate(50%, 50%);
+    -webkit-transform: translate(50%, 50%);
+}
+
+.biomesContainer {
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+    align-items: center;
+}
+.biomesContainer.soloMode {
+    justify-content: space-around;
+    width: 100%;
+}
+
+.playSide {
+    display: flex;
+    height: 100%;
+    width: 45%;
+    justify-content: center;
+    align-items: center;
+}
+
+.biomesRelative {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0.2em;
+}
+
+.biomesRelative.soloMode {
+    width: 28%;
+}
+
+.roundButton {
+    cursor: pointer;
+    height: var(--round-button-height);
+    width: var(--round-button-height);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--main-button-color);
+    -webkit-box-shadow: 0px 10px 13px -7px #0000004f, 5px 5px 15px 5px rgba(0,0,0,0);
+    box-shadow: 0px 10px 13px -7px #0000004f, 5px 5px 15px 5px rgba(0,0,0,0);
+    transition: all .2s ease;
+}
+
+.red {
+    background-color: #e14343;
+}
+
+.roundButton:active {
+    transform: scale(1.1);
+    transition: .1s;
+}
+
+.sideButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    rotate: var(--angle);
+    row-gap: 0.5em;
+}
+
+.timerText {
+    font-size: 0.75em;
+}
+
+.timerText.soloMode {
+    font-size: 1.25em;
+    text-align: center;
+    width: 3.5em;
+    background-color: var(--main-button-color);
+    padding: 0.25em 0.5em;
+    border-radius: 0 0 0.5em 0.5em;
+    color: var(--main-text-color);
+    text-shadow: 2px 2px 5px rgb(65 65 65);
+}
+
+
+.timerContainer {
+    row-gap: 0.15em
+}
+
+.timerContainer.soloMode {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    column-gap: 0.5em
+}
+
+.timerButtons {
+    column-gap: 0.45em
+}
+
+.icon {
+    background-image: var(--icon-url);
+    height: var(--icon-size);
+    width: var(--icon-size);
+    aspect-ratio: 1;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.biomesInactive {
+    opacity: 0.4;
+}
+
+.toggleModalButtonsContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5em;
+}
+
+.biomesModal {
+    position: relative;
+    width: 2.75em;
+    aspect-ratio: 3/2.15;
+     -webkit-clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+}
+
+.biomesModal.soloMode {
+    font-size: 1.5em;
+    width: 100%;
+    max-width: 2.5em;
+}
+
+.biomesValueModal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.biomesValueModalReverse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(-1, -1);
+    -webkit-transform: translate(-50%, -50%) scale(-1, -1);
+}
+
+.biomes {
+    position: relative;
+    width: 3.2em;
+    aspect-ratio: 3/2;
+    /*aspect-ratio: 3.15/2.15;*/
+   /* -webkit-clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);*/
+    -webkit-clip-path: polygon(100% 0, 90% 100%, 40% 100%, 65% 0, 60% 0, 35% 100%, 0 100%, 10% 0, 34% 0, 45% 0);
+}
+
+.biomesValueBottomOpponent {
+    position: absolute;
+    top: 30%;
+    left: 28.5%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.biomesValueBottom {
+    position: absolute;
+    top: 70%;
+    left: 71.5%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.biomesValueTop {
+    position: absolute;
+    top: 30%;
+    left: 28.5%;
+    transform: translate(-50%, -50%) scale(-1,-1);
+    -webkit-transform: translate(-50%, -50%) scale(-1,-1);
+}
+
+.biomesValueTopOpponent {
+    position: absolute;
+    top: 70%;
+    left: 71.5%;
+    transform: translate(-50%, -50%) scale(-1,-1);
+    -webkit-transform: translate(-50%, -50%) scale(-1,-1);
+}
+
+.reverse {
+    rotate: z 180deg;
+}
+
+.reverseY {
+    rotate: y 180deg;
+}
+
+.relative {
+    position: relative;
+}
+
+.biomesValueMirror {
+    font-size: 0.8em;
+    text-shadow: 2px 2px 5px rgb(65 65 65);
+}
+
+.biomesValueOriginal {
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgb(65 65 65);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.biomesValueSuperior {
+    color: var(--biomes-superior-value-color);
+}
+
+.biomesValueInferior {
+    color: var(--biomes-inferior-value-color);
+}
+
+.changeValueButton {
+    background-image: var(--bg-arrow);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 0.8em;
+    aspect-ratio: 1;
+    transform: translate(0.1em, 0);
+    -webkit-transform: translate(0.1em, 0);
+    transition: all 0.1s ease-in-out;
+}
+
+.changeValueContainer {
+    cursor: pointer;
+}
+
+.changeValueButton.soloMode {
+    height: 1em;
+}
+
+.pressed {
+    scale:1.5;
+    opacity: 0.5;
+    transition: .1s;
+}
+
+.forestBiomes {
+    background-color: var(--forest-color);
+}
+.mountainBiomes {
+    background-color: var(--mountain-color);
+}
+.waterBiomes {
+    background-color: var(--water-color);
+}
+
+
+.CenterBreak {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    height: 1.25em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.line {
+    height: 3px;
+    width: 100%;
+}
+.lineLeft {
+    background: linear-gradient(to right, transparent, var(--line-color));
+}
+.lineRight {
+    background: linear-gradient(to right, var(--line-color), transparent);
+}
+.AlteredLogo {
+    cursor: pointer;
+    background-image: url("./Assets/AlteredLogo.webp");
+    background-size: 85%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    aspect-ratio: 1;
+    margin: 0 0.1em
+}
+
+.advanceDetailRight {
+    display: flex;
+    background-color: var(--main-bg-color);
+    padding: 0 0.25em;
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+}
+
+.advanceDetailLeft {
+    display: flex;
+    background-color: var(--main-bg-color);
+    padding: 0 0.25em;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+#advanceTopLeftArrow {
+    position: absolute;
+    bottom: 1em;
+    left: 1.75em;
+}
+
+#advanceBottomLeftArrow {
+    position: absolute;
+    top: 1em;
+    left: 1.75em;
+}
+
+#advanceBottomRightArrow {
+    position: absolute;
+    top: 1em;
+    right: 1.75em;
+}
+
+#advanceTopRightArrow {
+    position: absolute;
+    bottom: 1em;
+    right: 1.75em;
+}
+
+.radioButton {
+    width: 100%;
+    height: 2em;
+}
+
+input[type="radio"] {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 2em;
+    height: 2em;
+    border: 0.2em solid var(--radioButton-border-color);
+    border-radius: 50%;
+    background-color: #e5e7eb;
+    transition: scale .2s ease;
+}
+
+input[type="radio"]:checked {
+    background-color: var(--main-button-color);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 2.2em;
+    height: 1.2em;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: transform .4s;
+    transition: transform .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1em;
+    width: 1em;
+    left: 0.1em;
+    bottom: 0.1em;
+    background-color: white;
+    -webkit-transition: transform .4s;
+    transition: transform .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--main-button-color);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--main-button-color);
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(1em);
+    -ms-transform: translateX(1em);
+    transform: translateX(1em);
+}
+
+.slider.round {
+    border-radius: 1.2em;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+@media screen and (min-height: 912px) and (orientation: landscape) {
+    :root {
+        --default-body-font-size: 48px;
+    }
+}
+
+@media screen and (min-height: 820px) and (max-height: 911px) and (orientation: landscape) {
+    :root {
+        --default-body-font-size: 40px;
+    }
+}
+
+@media screen and (min-height: 768px) and (max-height: 819px) and (orientation: landscape) {
+    :root {
+        --default-body-font-size: 36px;
+    }
+}
+
+@media only screen and (max-height: 376px) and (orientation: landscape) {
+    :root {
+        --default-body-font-size: 26px;
+    }
+}
+
+@media only screen and (max-height: 330px) and (orientation: landscape) {
+    :root {
+        --default-body-font-size: 22px;
+    }
+}
+
+
