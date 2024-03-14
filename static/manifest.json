@@ -3,26 +3,26 @@
   "short_name": "Altered Counter",
   "icons": [
     {
-      "src": "/static/Assets/appIcon_256.png",
+      "src": "/altered/static/Assets/appIcon_256.png",
       "sizes": "256x256",
       "type": "image/png"
     },
     {
-      "src": "/static/Assets/appIcon_512.png",
+      "src": "/altered/static/Assets/appIcon_512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "screenshots" : [
     {
-      "src": "/static/Assets/screenshotPortrait.png",
+      "src": "/altered/static/Assets/screenshotPortrait.png",
       "sizes": "541x1198",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Portrait mode"
     },
     {
-      "src": "/static/Assets/screenshotLandscape.png",
+      "src": "/altered/static/Assets/screenshotLandscape.png",
       "sizes": "1363x613",
       "type": "image/png",
       "form_factor": "narrow",
