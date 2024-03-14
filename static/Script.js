@@ -90,13 +90,13 @@ function getDefaultBodyFontSize() {
     return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--default-body-font-size'))
 }
 
-/*function preventPullToRefreshPWA() {
+function preventPullToRefreshPWA() {
     if(!window.matchMedia('(display-mode: fullscreen)').matches) {
         return
     }
     document.body.style.overscrollBehaviorY = "contain"
 }
-preventPullToRefreshPWA()*/
+preventPullToRefreshPWA()
 
 function SetPreferences() {
     let theme = localStorage.getItem('theme');
