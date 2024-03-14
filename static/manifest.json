@@ -30,6 +30,6 @@
     }
   ],
   "orientation" : "landscape-primary",
-  "start_url": "/",
+  "start_url": "/altered",
   "display": "fullscreen"
 }
