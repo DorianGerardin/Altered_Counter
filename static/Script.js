@@ -204,6 +204,8 @@ function toggleTuto(isOn) {
         document.getElementById("TutorialContainer").style.scale = "1"
     } else {
         document.getElementById("TutorialContainer").style.scale = "0"
+        let firstTutoCard = document.getElementById("firstTutoCard")
+        firstTutoCard.scrollIntoView({ behavior: 'auto'});
     }
 }
 
