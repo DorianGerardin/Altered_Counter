@@ -45,6 +45,11 @@ if(isMobile()) {
             window.AddToHomeScreenInstance.show();
             localStorage.setItem('visited', 'true');
         }
+
+        if(!localStorage.getItem('visitedPWA') && isPWA()) {
+            toggleTuto(true)
+            localStorage.setItem('visitedPWA', 'true');
+        }
     });
 }
 
@@ -90,8 +95,12 @@ function getDefaultBodyFontSize() {
     return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--default-body-font-size'))
 }
 
+function isPWA() {
+    return window.matchMedia('(display-mode: fullscreen)').matches
+}
+
 function preventPullToRefreshPWA() {
-    if(!window.matchMedia('(display-mode: fullscreen)').matches) {
+    if(!isPWA()) {
         return
     }
     document.body.style.overscrollBehaviorY = "contain"
@@ -190,6 +199,13 @@ function updateTimer() {
     setTimerText(timerSeconds, timerMinutes)
 }
 
+function toggleTuto(isOn) {
+    if(isOn) {
+        document.getElementById("TutorialContainer").style.scale = "1"
+    } else {
+        document.getElementById("TutorialContainer").style.scale = "0"
+    }
+}
 
 function toggleTheme(value) {
     switch (value) {
