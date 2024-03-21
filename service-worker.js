@@ -1,4 +1,4 @@
-const CACHE_NAME = 'Altered_Counter_cache-v8';
+const CACHE_NAME = 'Altered_Counter_cache-v9';
 
 let urlsToCache = [
     '/altered/',
@@ -87,7 +87,7 @@ self.addEventListener("activate", (e) => {
     );
 });*/
 
-self.addEventListener('fetch', function(e) {
+/*self.addEventListener('fetch', function(e) {
     e.respondWith(
         (async () => {
             return fetch(e.request)
@@ -104,6 +104,22 @@ self.addEventListener('fetch', function(e) {
                         return new Response('', { status: 404, statusText: 'Not Found' });
                     }
                 });
+        })(),
+    );
+});*/
+
+self.addEventListener('fetch', function(e) {
+    e.respondWith(
+        (async () => {
+            const cachedResponse = await caches.match(e.request);
+            const networkResponsePromise = fetch(e.request).then(async (response) => {
+                const cache = await caches.open(CACHE_NAME);
+                await cache.put(e.request, response.clone());
+                return response;
+            }).catch(() => {
+                return cachedResponse || new Response('', { status: 404, statusText: 'Not Found' });
+            });
+            return cachedResponse || networkResponsePromise;
         })(),
     );
 });

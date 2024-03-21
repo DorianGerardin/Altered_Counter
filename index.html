@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <title>Altered Counter</title>
-    <link rel="icon" type="image/png" href="/static/Assets/appIcon_256.png">
+    <link rel="icon" type="image/png" href="static/Assets/appIcon_256.png">
     <link rel="stylesheet" type="text/css" href="static/Styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,566 +20,704 @@
 
 <body>
 
-<div id="portraitModeWarning" class="flexCenter">
-    <div class="icon" style="--icon-url: url('Assets/rotateLogo.svg'); --icon-size: 8em"></div>
-    <div class="adaptiveColorText" style="width: 90%;">Rotate your device for best results </div>
-</div>
-
-<div id="app">
-
-<div id="soloPlayer" class="flexCenter fullSize column hidden">
-    <div class="flexCenter row timerContainer soloMode hidden">
-        <div class="roundButton flexCenter playTimer" style="--round-button-height: 1.75em;">
-            <span class="icon" style="--icon-url: url('Assets/play.svg'); --icon-size: 0.75em"></span>
-        </div>
-        <div class="timerText soloMode">00 : 00</div>
-        <div class="roundButton flexCenter stopTimer" onclick="stopTimer()" style="--round-button-height: 1.75em;">
-            <span class="icon" style="--icon-url: url('Assets/stop.svg'); --icon-size: 0.75em"></span>
-        </div>
+    <div id="portraitModeWarning" class="flexCenter">
+        <div class="icon" style="--icon-url: url('Assets/rotateLogo.svg'); --icon-size: 8em"></div>
+        <div class="adaptiveColorText" style="width: 90%;">Rotate your device for best results </div>
     </div>
 
-    <div class="biomesContainer soloMode">
+    <div id="app">
 
-        <div class="flexCenter row fullWidth" style="row-gap: 0.5em">
+    <div id="soloPlayer" class="flexCenter fullSize column hidden">
+        <div class="flexCenter row timerContainer soloMode hidden">
+            <div class="roundButton flexCenter playTimer" style="--round-button-height: 1.75em;">
+                <span class="icon" style="--icon-url: url('Assets/play.svg'); --icon-size: 0.75em"></span>
+            </div>
+            <div class="timerText soloMode">00 : 00</div>
+            <div class="roundButton flexCenter stopTimer" onclick="stopTimer()" style="--round-button-height: 1.75em;">
+                <span class="icon" style="--icon-url: url('Assets/stop.svg'); --icon-size: 0.75em"></span>
+            </div>
+        </div>
 
-            <div id="soloLeftSide" class="playSide row soloMode">
-                <div class="flexCenter row fullWidth">
-                    <div class="biomesRelative soloMode">
-                        <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueForestSoloLeft">
-                            <div class="changeValueButton soloMode" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+        <div class="biomesContainer soloMode">
+
+            <div class="flexCenter row fullWidth" style="row-gap: 0.5em">
+
+                <div id="soloLeftSide" class="playSide row soloMode">
+                    <div class="flexCenter row fullWidth">
+                        <div class="biomesRelative soloMode">
+                            <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueForestSoloLeft">
+                                <div class="changeValueButton soloMode" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+                            </div>
+                            <div class="biomesModal forestBiomes soloMode biomesActive" onclick="ToggleBiomes(this)">
+                                <div id="biomesValueForestSoloLeft" class="modalValue biomesValueModal biomesValueOriginal">0</div>
+                                <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.45em"></span>
+                            </div>
+                            <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueForestSoloLeft">
+                                <div class="changeValueButton reverse soloMode" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+                            </div>
                         </div>
-                        <div class="biomesModal forestBiomes soloMode biomesActive" onclick="ToggleBiomes(this)">
-                            <div id="biomesValueForestSoloLeft" class="modalValue biomesValueModal biomesValueOriginal">0</div>
-                            <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.45em"></span>
+
+                        <div class="biomesRelative soloMode">
+                            <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueMountainSoloLeft">
+                                <div class="changeValueButton soloMode" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                            </div>
+                            <div class="biomesModal mountainBiomes soloMode biomesActive" onclick="ToggleBiomes(this)">
+                                <div id="biomesValueMountainSoloLeft" class="modalValue biomesValueModal biomesValueOriginal">0</div>
+                                <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.45em"></span>
+                            </div>
+                            <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueMountainSoloLeft">
+                                <div class="changeValueButton reverse soloMode" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                            </div>
                         </div>
-                        <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueForestSoloLeft">
-                            <div class="changeValueButton reverse soloMode" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+
+                        <div class="biomesRelative soloMode">
+                            <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueWaterSoloLeft">
+                                <div class="changeValueButton soloMode" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                            </div>
+                            <div class="biomesModal waterBiomes soloMode biomesActive" onclick="ToggleBiomes(this)">
+                                <div id="biomesValueWaterSoloLeft" class="modalValue biomesValueModal biomesValueOriginal">0</div>
+                                <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.45em"></span>
+                            </div>
+                            <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueWaterSoloLeft">
+                                <div class="changeValueButton reverse soloMode" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="biomesRelative soloMode">
-                        <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueMountainSoloLeft">
-                            <div class="changeValueButton soloMode" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-                        </div>
-                        <div class="biomesModal mountainBiomes soloMode biomesActive" onclick="ToggleBiomes(this)">
-                            <div id="biomesValueMountainSoloLeft" class="modalValue biomesValueModal biomesValueOriginal">0</div>
-                            <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.45em"></span>
-                        </div>
-                        <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueMountainSoloLeft">
-                            <div class="changeValueButton reverse soloMode" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-                        </div>
-                    </div>
+                <div class="AlteredLogo" onclick="toggleSettings(true)" style="height: 1.75em"></div>
 
-                    <div class="biomesRelative soloMode">
-                        <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueWaterSoloLeft">
-                            <div class="changeValueButton soloMode" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                <div id="soloRightSide" class="playSide row" style="column-gap: 1em">
+                    <div class="flexCenter row fullWidth">
+                        <div class="biomesRelative soloMode">
+                            <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueForestSoloRight">
+                                <div class="changeValueButton soloMode" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+                            </div>
+                            <div class="biomesModal forestBiomes soloMode biomesActive" onclick="ToggleBiomes(this)">
+                                <div id="biomesValueForestSoloRight" class="modalValue biomesValueModal biomesValueOriginal">0</div>
+                                <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.45em"></span>
+                            </div>
+                            <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueForestSoloRight">
+                                <div class="changeValueButton reverse soloMode" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+                            </div>
                         </div>
-                        <div class="biomesModal waterBiomes soloMode biomesActive" onclick="ToggleBiomes(this)">
-                            <div id="biomesValueWaterSoloLeft" class="modalValue biomesValueModal biomesValueOriginal">0</div>
-                            <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.45em"></span>
+
+                        <div class="biomesRelative soloMode">
+                            <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueMountainSoloRight">
+                                <div class="changeValueButton soloMode" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                            </div>
+                            <div class="biomesModal mountainBiomes soloMode biomesActive" onclick="ToggleBiomes(this)">
+                                <div id="biomesValueMountainSoloRight" class="modalValue biomesValueModal biomesValueOriginal">0</div>
+                                <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.45em"></span>
+                            </div>
+                            <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueMountainSoloRight">
+                                <div class="changeValueButton reverse soloMode" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                            </div>
                         </div>
-                        <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueWaterSoloLeft">
-                            <div class="changeValueButton reverse soloMode" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+
+                        <div class="biomesRelative soloMode">
+                            <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueWaterSoloRight">
+                                <div class="changeValueButton soloMode" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                            </div>
+                            <div class="biomesModal waterBiomes soloMode biomesActive" onclick="ToggleBiomes(this)">
+                                <div id="biomesValueWaterSoloRight" class="modalValue biomesValueModal biomesValueOriginal">0</div>
+                                <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.45em"></span>
+                            </div>
+                            <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueWaterSoloRight">
+                                <div class="changeValueButton reverse soloMode" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="flexCenter row fullWidth" style="column-gap: 0.5em;">
+            <div class="flexCenter row" style="--angle: z 0deg; column-gap: 1em; width: 45%">
+                <div class="roundButton icon" onclick="Boost('soloLeftSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 2em;"></div>
+                <div class="roundButton flexCenter" onclick="ToggleModal('modalBottom', 'soloLeftSide', true)" style="--round-button-height: 2em;">
+                    <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 1em"></span>
+                </div>
+                <div class="roundButton icon" onclick="Boost('soloLeftSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 2em;"></div>
+            </div>
 
-            <div class="AlteredLogo" onclick="toggleSettings(true)" style="height: 1.75em"></div>
+            <div class="roundButton flexCenter" onclick="ResetBiomesValue('soloPlayer')" style="--round-button-height: 2em;">
+                <span class="icon" style="--icon-url: url('Assets/reset.svg'); --icon-size: 1em"></span>
+            </div>
 
-            <div id="soloRightSide" class="playSide row" style="column-gap: 1em">
-                <div class="flexCenter row fullWidth">
-                    <div class="biomesRelative soloMode">
-                        <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueForestSoloRight">
-                            <div class="changeValueButton soloMode" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
-                        </div>
-                        <div class="biomesModal forestBiomes soloMode biomesActive" onclick="ToggleBiomes(this)">
-                            <div id="biomesValueForestSoloRight" class="modalValue biomesValueModal biomesValueOriginal">0</div>
-                            <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.45em"></span>
-                        </div>
-                        <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueForestSoloRight">
-                            <div class="changeValueButton reverse soloMode" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
-                        </div>
-                    </div>
+            <div class="flexCenter row" style="--angle: z 0deg; column-gap: 1em; width: 45%">
+                <div class="roundButton icon" onclick="Boost('soloRightSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 2em;"></div>
+                <div class="roundButton flexCenter" onclick="ToggleModal('modalBottom', 'soloRightSide', true)" style="--round-button-height: 2em;">
+                    <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 1em"></span>
+                </div>
+                <div class="roundButton icon" onclick="Boost('soloRightSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 2em;"></div>
+            </div>
+        </div>
+    </div>
 
-                    <div class="biomesRelative soloMode">
-                        <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueMountainSoloRight">
-                            <div class="changeValueButton soloMode" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-                        </div>
-                        <div class="biomesModal mountainBiomes soloMode biomesActive" onclick="ToggleBiomes(this)">
-                            <div id="biomesValueMountainSoloRight" class="modalValue biomesValueModal biomesValueOriginal">0</div>
-                            <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.45em"></span>
-                        </div>
-                        <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueMountainSoloRight">
-                            <div class="changeValueButton reverse soloMode" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-                        </div>
-                    </div>
+    <div id="AddCharacterModal" class="flexCenter modal">
+        <div id="modalTop" class="modalContainer hidden">
+            <div class="toggleModalButtonsContainer">
+                <div class="roundButton flexCenter" onclick="ValidateCharacter('modalTop')" style="--round-button-height: 1.25em; margin-right:0.5em">
+                    <span class="icon reverse" style="--icon-url: url('Assets/check.svg'); --icon-size: 0.75em"></span>
+                </div>
+                <div class="roundButton red flexCenter" onclick="ToggleModal('modalTop', '', false)" style="--round-button-height: 1.25em; margin-right:0.5em">
+                    <span class="icon reverse" style="--icon-url: url('Assets/cross_dark.svg'); --icon-size: 0.5em"></span>
+                </div>
+            </div>
+            <div class="biomesRelative">
+                <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueForestModalTop">
+                    <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+                </div>
+                <div class="biomesModal forestBiomes">
+                    <div id="biomesValueForestModalTop" class="biomesValueModalReverse biomesValueOriginal modalValue">1</div>
+                    <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.7em"></span>
+                </div>
+                <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueForestModalTop">
+                    <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+                </div>
+            </div>
 
-                    <div class="biomesRelative soloMode">
-                        <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueWaterSoloRight">
-                            <div class="changeValueButton soloMode" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
-                        </div>
-                        <div class="biomesModal waterBiomes soloMode biomesActive" onclick="ToggleBiomes(this)">
-                            <div id="biomesValueWaterSoloRight" class="modalValue biomesValueModal biomesValueOriginal">0</div>
-                            <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.45em"></span>
-                        </div>
-                        <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueWaterSoloRight">
-                            <div class="changeValueButton reverse soloMode" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
-                        </div>
-                    </div>
+            <div class="biomesRelative">
+                <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueMountainModalTop">
+                    <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                </div>
+                <div class="biomesModal mountainBiomes">
+                    <div id="biomesValueMountainModalTop" class="biomesValueModalReverse biomesValueOriginal modalValue">1</div>
+                    <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.7em"></span>
+                </div>
+                <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueMountainModalTop">
+                    <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                </div>
+            </div>
+
+            <div class="biomesRelative">
+                <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueWaterModalTop">
+                    <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                </div>
+                <div class="biomesModal waterBiomes">
+                    <div id="biomesValueWaterModalTop" class="biomesValueModalReverse biomesValueOriginal modalValue">1</div>
+                    <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.7em"></span>
+                </div>
+                <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueWaterModalTop">
+                    <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                </div>
+            </div>
+            <div class="roundButton icon reverse" onclick="Boost('modalTop', 1, true)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.25em; margin-left:0.5em"></div>
+        </div>
+        <div id="modalBottom" class="modalContainer hidden">
+            <div class="roundButton icon" onclick="Boost('modalBottom', 1, true)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.25em; margin-right:0.5em"></div>
+            <div class="biomesRelative">
+                <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueForestModalBottom">
+                    <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+                </div>
+                <div class="biomesModal forestBiomes">
+                    <div id="biomesValueForestModalBottom" class="biomesValueModal biomesValueOriginal modalValue">1</div>
+                    <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.7em"></span>
+                </div>
+                <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueForestModalBottom">
+                    <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+                </div>
+            </div>
+
+            <div class="biomesRelative">
+                <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueMountainModalBottom">
+                    <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                </div>
+                <div class="biomesModal mountainBiomes">
+                    <div id="biomesValueMountainModalBottom" class="biomesValueModal biomesValueOriginal modalValue">1</div>
+                    <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.7em"></span>
+                </div>
+                <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueMountainModalBottom">
+                    <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                </div>
+            </div>
+
+            <div class="biomesRelative">
+                <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueWaterModalBottom">
+                    <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                </div>
+                <div class="biomesModal waterBiomes">
+                    <div id="biomesValueWaterModalBottom" class="biomesValueModal biomesValueOriginal modalValue">1</div>
+                    <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.7em"></span>
+                </div>
+                <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueWaterModalBottom">
+                    <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                </div>
+            </div>
+
+            <div class="toggleModalButtonsContainer">
+                <div class="roundButton red flexCenter" onclick="ToggleModal('modalBottom', '', false)" style="--round-button-height: 1.25em; margin-left:0.5em">
+                    <span class="icon" style="--icon-url: url('Assets/cross_dark.svg'); --icon-size: 0.5em"></span>
+                </div>
+                <div class="roundButton flexCenter" onclick="ValidateCharacter('modalBottom')" style="--round-button-height: 1.25em; margin-left:0.5em">
+                    <span class="icon" style="--icon-url: url('Assets/check.svg'); --icon-size: 0.75em"></span>
                 </div>
             </div>
         </div>
     </div>
-    <div class="flexCenter row fullWidth" style="column-gap: 0.5em;">
-        <div class="flexCenter row" style="--angle: z 0deg; column-gap: 1em; width: 45%">
-            <div class="roundButton icon" onclick="Boost('soloLeftSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 2em;"></div>
-            <div class="roundButton flexCenter" onclick="ToggleModal('modalBottom', 'soloLeftSide', true)" style="--round-button-height: 2em;">
-                <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 1em"></span>
-            </div>
-            <div class="roundButton icon" onclick="Boost('soloLeftSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 2em;"></div>
-        </div>
 
-        <div class="roundButton flexCenter" onclick="ResetBiomesValue('soloPlayer')" style="--round-button-height: 2em;">
-            <span class="icon" style="--icon-url: url('Assets/reset.svg'); --icon-size: 1em"></span>
-        </div>
-
-        <div class="flexCenter row" style="--angle: z 0deg; column-gap: 1em; width: 45%">
-            <div class="roundButton icon" onclick="Boost('soloRightSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 2em;"></div>
-            <div class="roundButton flexCenter" onclick="ToggleModal('modalBottom', 'soloRightSide', true)" style="--round-button-height: 2em;">
-                <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 1em"></span>
-            </div>
-            <div class="roundButton icon" onclick="Boost('soloRightSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 2em;"></div>
-        </div>
-    </div>
-</div>
-
-<div id="AddCharacterModal" class="flexCenter modal">
-    <div id="modalTop" class="modalContainer hidden">
-        <div class="toggleModalButtonsContainer">
-            <div class="roundButton flexCenter" onclick="ValidateCharacter('modalTop')" style="--round-button-height: 1.25em; margin-right:0.5em">
-                <span class="icon reverse" style="--icon-url: url('Assets/check.svg'); --icon-size: 0.75em"></span>
-            </div>
-            <div class="roundButton red flexCenter" onclick="ToggleModal('modalTop', '', false)" style="--round-button-height: 1.25em; margin-right:0.5em">
-                <span class="icon reverse" style="--icon-url: url('Assets/cross_dark.svg'); --icon-size: 0.5em"></span>
-            </div>
-        </div>
-        <div class="biomesRelative">
-            <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueForestModalTop">
-                <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
-            </div>
-            <div class="biomesModal forestBiomes">
-                <div id="biomesValueForestModalTop" class="biomesValueModalReverse biomesValueOriginal modalValue">1</div>
-                <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.7em"></span>
-            </div>
-            <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueForestModalTop">
-                <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
-            </div>
-        </div>
-
-        <div class="biomesRelative">
-            <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueMountainModalTop">
-                <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-            </div>
-            <div class="biomesModal mountainBiomes">
-                <div id="biomesValueMountainModalTop" class="biomesValueModalReverse biomesValueOriginal modalValue">1</div>
-                <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.7em"></span>
-            </div>
-            <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueMountainModalTop">
-                <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-            </div>
-        </div>
-
-        <div class="biomesRelative">
-            <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueWaterModalTop">
-                <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
-            </div>
-            <div class="biomesModal waterBiomes">
-                <div id="biomesValueWaterModalTop" class="biomesValueModalReverse biomesValueOriginal modalValue">1</div>
-                <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.7em"></span>
-            </div>
-            <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueWaterModalTop">
-                <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
-            </div>
-        </div>
-        <div class="roundButton icon reverse" onclick="Boost('modalTop', 1, true)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.25em; margin-left:0.5em"></div>
-    </div>
-    <div id="modalBottom" class="modalContainer hidden">
-        <div class="roundButton icon" onclick="Boost('modalBottom', 1, true)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.25em; margin-right:0.5em"></div>
-        <div class="biomesRelative">
-            <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueForestModalBottom">
-                <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
-            </div>
-            <div class="biomesModal forestBiomes">
-                <div id="biomesValueForestModalBottom" class="biomesValueModal biomesValueOriginal modalValue">1</div>
-                <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.7em"></span>
-            </div>
-            <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueForestModalBottom">
-                <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
-            </div>
-        </div>
-
-        <div class="biomesRelative">
-            <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueMountainModalBottom">
-                <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-            </div>
-            <div class="biomesModal mountainBiomes">
-                <div id="biomesValueMountainModalBottom" class="biomesValueModal biomesValueOriginal modalValue">1</div>
-                <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.7em"></span>
-            </div>
-            <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueMountainModalBottom">
-                <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-            </div>
-        </div>
-
-        <div class="biomesRelative">
-            <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueWaterModalBottom">
-                <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
-            </div>
-            <div class="biomesModal waterBiomes">
-                <div id="biomesValueWaterModalBottom" class="biomesValueModal biomesValueOriginal modalValue">1</div>
-                <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.7em"></span>
-            </div>
-            <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueWaterModalBottom">
-                <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
-            </div>
-        </div>
-
-        <div class="toggleModalButtonsContainer">
-            <div class="roundButton red flexCenter" onclick="ToggleModal('modalBottom', '', false)" style="--round-button-height: 1.25em; margin-left:0.5em">
-                <span class="icon" style="--icon-url: url('Assets/cross_dark.svg'); --icon-size: 0.5em"></span>
-            </div>
-            <div class="roundButton flexCenter" onclick="ValidateCharacter('modalBottom')" style="--round-button-height: 1.25em; margin-left:0.5em">
-                <span class="icon" style="--icon-url: url('Assets/check.svg'); --icon-size: 0.75em"></span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="settings" class="modal">
-    <div class="modalContainer visible column" style="row-gap: 0.5em">
-        <span class="icon closeModalButton" onclick="toggleSettings(false)" style="--icon-url: var(--cross-button); --icon-size: 1.5em"></span>
-        <h1 class="adaptiveColorText">Settings</h1>
-        <div class="flexCenter row" style="column-gap: 1em">
-            <div class="adaptiveColorText">Theme</div>
+    <div id="settings" class="modal">
+        <div class="modalContainer visible column" style="row-gap: 0.5em">
+            <span class="icon closeModalButton" onclick="toggleSettings(false)" style="--icon-url: var(--cross-button); --icon-size: 1.5em"></span>
+            <div class="helpButton" onclick="toggleTuto(true)">Tutorial</div>
+            <h1 class="adaptiveColorText">Settings</h1>
             <div class="flexCenter row" style="column-gap: 1em">
-                <div class="flexCenter column" style="row-gap: 0.25em">
-                    <label class="adaptiveColorText" for="darkModeButton">Dark</label>
-                    <input class="radioButton" type="radio" id="darkModeButton" name="theme" value="dark" onchange="toggleTheme(this.value)">
-                </div>
-                <div class="flexCenter column" style="row-gap: 0.25em">
-                    <label class="adaptiveColorText" for="lightModeButton">Light</label>
-                    <input class="radioButton" type="radio" id="lightModeButton" name="theme" value="light" onchange="toggleTheme(this.value)"/>
-                </div>
-                <div class="flexCenter column" style="row-gap: 0.25em">
-                    <label class="adaptiveColorText" for="systemModeButton">System</label>
-                    <input class="radioButton" type="radio" id="systemModeButton" name="theme" value="system" onchange="toggleTheme(this.value)"/>
+                <div class="adaptiveColorText">Theme</div>
+                <div class="flexCenter row" style="column-gap: 1em">
+                    <div class="flexCenter column" style="row-gap: 0.25em">
+                        <label class="adaptiveColorText" for="darkModeButton">Dark</label>
+                        <input class="radioButton" type="radio" id="darkModeButton" name="theme" value="dark" onchange="toggleTheme(this.value)">
+                    </div>
+                    <div class="flexCenter column" style="row-gap: 0.25em">
+                        <label class="adaptiveColorText" for="lightModeButton">Light</label>
+                        <input class="radioButton" type="radio" id="lightModeButton" name="theme" value="light" onchange="toggleTheme(this.value)"/>
+                    </div>
+                    <div class="flexCenter column" style="row-gap: 0.25em">
+                        <label class="adaptiveColorText" for="systemModeButton">System</label>
+                        <input class="radioButton" type="radio" id="systemModeButton" name="theme" value="system" onchange="toggleTheme(this.value)"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="flexCenter row" style="column-gap: 1em">
-            <div class="adaptiveColorText">Solo mode</div>
-            <label class="switch">
-                <input id="toggleSoloMode" type="checkbox" onchange="toggleSoloMode(this.checked)">
-                <span class="slider round"></span>
-            </label>
-        </div>
-        <div class="flexCenter row" style="column-gap: 1em">
-            <div class="adaptiveColorText">Timer</div>
-            <label class="switch">
-                <input id="toggleTimerButton" type="checkbox" onchange="toggleTimer(this.checked)">
-                <span class="slider round"></span>
-            </label>
-        </div>
-        <div class="flexCenter row" style="column-gap: 1em">
-            <div class="adaptiveColorText">Biomes icons</div>
-            <label class="switch">
-                <input id="toggleBiomesIcons" type="checkbox" onchange="toggleBiomesIcons(this.checked)">
-                <span class="slider round"></span>
-            </label>
-        </div>
-        <div class="flexCenter row" style="column-gap: 1em">
-            <div class="adaptiveColorText">Zoom</div>
-            <div class="flexCenter row" style="column-gap: 0.5em">
-                <span id="zoomOutButton" class="icon zoomButton" onclick="zoom(-0.05)" style="--icon-url: var(--zoomOut-button);--icon-size: 1.5em"></span>
-                <div id="zoomValue" class="zoomPercent adaptiveColorText">100%</div>
-                <span id="zoomInButton" class="icon zoomButton" onclick="zoom(0.05)" style="--icon-url: var(--zoomIn-button);--icon-size: 1.5em"></span>
+            <div class="flexCenter row" style="column-gap: 1em">
+                <div class="adaptiveColorText">Solo mode</div>
+                <label class="switch">
+                    <input id="toggleSoloMode" type="checkbox" onchange="toggleSoloMode(this.checked)">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="flexCenter row" style="column-gap: 1em">
+                <div class="adaptiveColorText">Timer</div>
+                <label class="switch">
+                    <input id="toggleTimerButton" type="checkbox" onchange="toggleTimer(this.checked)">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="flexCenter row" style="column-gap: 1em">
+                <div class="adaptiveColorText">Biomes icons</div>
+                <label class="switch">
+                    <input id="toggleBiomesIcons" type="checkbox" onchange="toggleBiomesIcons(this.checked)">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="flexCenter row" style="column-gap: 1em">
+                <div class="adaptiveColorText">Zoom</div>
+                <div class="flexCenter row" style="column-gap: 0.5em">
+                    <span id="zoomOutButton" class="icon zoomButton" onclick="zoom(-0.05)" style="--icon-url: var(--zoomOut-button);--icon-size: 1.5em"></span>
+                    <div id="zoomValue" class="zoomPercent adaptiveColorText">100%</div>
+                    <span id="zoomInButton" class="icon zoomButton" onclick="zoom(0.05)" style="--icon-url: var(--zoomIn-button);--icon-size: 1.5em"></span>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div id="twoPlayers" class="fullSize column visible">
-    <div id="TopPlayer" class="playerSide">
-        <div class="biomesContainer">
-            <div class="sideButtons" style="--angle: z 180deg;">
-                <div class="roundButton icon" onclick="Boost('TopLeftSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.5em;"></div>
-                <div class="roundButton icon" onclick="Boost('TopLeftSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 1.5em;"></div>
-                <div class="roundButton flexCenter" onclick="ToggleModal('modalTop', 'TopLeftSide', true)" style="--round-button-height: 1.5em;">
-                    <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 0.75em"></span>
-                </div>
-            </div>
-
-            <div id="TopLeftSide" class="playSide">
-
-                <div class="biomesRelative">
-                    <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueForestTopLeft">
-                        <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
-                    </div>
-                    <div class="biomes forestBiomes biomesActive" onclick="ToggleBiomes(this)">
-                        <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.6em"></span>
-                        <div id="biomesValueForestTopLeft" class="biomesValueTop biomesValueOriginal">0</div>
-                        <div id="biomesValueForestBottomLeft_Mirror" class="biomesValueTopOpponent biomesValueMirror">0</div>
-                    </div>
-                    <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueForestTopLeft">
-                        <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+    <div id="twoPlayers" class="fullSize column visible">
+        <div id="TopPlayer" class="playerSide">
+            <div class="biomesContainer">
+                <div class="sideButtons" style="--angle: z 180deg;">
+                    <div class="roundButton icon" onclick="Boost('TopLeftSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.5em;"></div>
+                    <div class="roundButton icon" onclick="Boost('TopLeftSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 1.5em;"></div>
+                    <div class="roundButton flexCenter" onclick="ToggleModal('modalTop', 'TopLeftSide', true)" style="--round-button-height: 1.5em;">
+                        <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 0.75em"></span>
                     </div>
                 </div>
 
-                <div class="biomesRelative">
-                    <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueMountainTopLeft">
-                        <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-                    </div>
-                    <div class="biomes mountainBiomes biomesActive" onclick="ToggleBiomes(this)">
-                        <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.6em"></span>
-                        <div id="biomesValueMountainTopLeft" class="biomesValueTop biomesValueOriginal">0</div>
-                        <div id="biomesValueMountainBottomLeft_Mirror" class="biomesValueTopOpponent biomesValueMirror">0</div>
-                    </div>
-                    <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueMountainTopLeft">
-                        <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-                    </div>
-                </div>
+                <div id="TopLeftSide" class="playSide">
 
-                <div class="biomesRelative">
-                    <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueWaterTopLeft">
-                        <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
-                    </div>
-                    <div class="biomes waterBiomes biomesActive" onclick="ToggleBiomes(this)">
-                        <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.6em"></span>
-                        <div id="biomesValueWaterTopLeft" class="biomesValueTop biomesValueOriginal">0</div>
-                        <div id="biomesValueWaterBottomLeft_Mirror" class="biomesValueTopOpponent biomesValueMirror">0</div>
-                    </div>
-                    <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueWaterTopLeft">
-                        <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flexCenter column" style="row-gap: 0.45em">
-                <div class="flexCenter column timerContainer reverse hidden">
-                    <div class="timerText adaptiveColorText">00 : 00</div>
-                    <div class="flexCenter timerButtons">
-                        <div class="roundButton flexCenter playTimer" style="--round-button-height: 1.25em;">
-                            <span class="icon" style="--icon-url: url('Assets/play.svg'); --icon-size: 0.5em"></span>
+                    <div class="biomesRelative">
+                        <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueForestTopLeft">
+                            <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
                         </div>
-                        <div class="roundButton flexCenter stopTimer" onclick="stopTimer()" style="--round-button-height: 1.25em;">
-                            <span class="icon" style="--icon-url: url('Assets/stop.svg'); --icon-size: 0.5em"></span>
+                        <div class="biomes forestBiomes biomesActive" onclick="ToggleBiomes(this)">
+                            <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.6em"></span>
+                            <div id="biomesValueForestTopLeft" class="biomesValueTop biomesValueOriginal">0</div>
+                            <div id="biomesValueForestBottomLeft_Mirror" class="biomesValueTopOpponent biomesValueMirror">0</div>
+                        </div>
+                        <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueForestTopLeft">
+                            <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+                        </div>
+                    </div>
+
+                    <div class="biomesRelative">
+                        <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueMountainTopLeft">
+                            <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                        </div>
+                        <div class="biomes mountainBiomes biomesActive" onclick="ToggleBiomes(this)">
+                            <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.6em"></span>
+                            <div id="biomesValueMountainTopLeft" class="biomesValueTop biomesValueOriginal">0</div>
+                            <div id="biomesValueMountainBottomLeft_Mirror" class="biomesValueTopOpponent biomesValueMirror">0</div>
+                        </div>
+                        <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueMountainTopLeft">
+                            <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                        </div>
+                    </div>
+
+                    <div class="biomesRelative">
+                        <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueWaterTopLeft">
+                            <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                        </div>
+                        <div class="biomes waterBiomes biomesActive" onclick="ToggleBiomes(this)">
+                            <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.6em"></span>
+                            <div id="biomesValueWaterTopLeft" class="biomesValueTop biomesValueOriginal">0</div>
+                            <div id="biomesValueWaterBottomLeft_Mirror" class="biomesValueTopOpponent biomesValueMirror">0</div>
+                        </div>
+                        <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueWaterTopLeft">
+                            <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
                         </div>
                     </div>
                 </div>
-                <div class="roundButton flexCenter reverse" onclick="ResetBiomesValue('TopPlayer')" style="--round-button-height: 1.75em;">
-                    <span class="icon" style="--icon-url: url('Assets/reset.svg'); --icon-size: 0.85em"></span>
+
+                <div class="flexCenter column" style="row-gap: 0.45em">
+                    <div class="flexCenter column timerContainer reverse hidden">
+                        <div class="timerText adaptiveColorText">00 : 00</div>
+                        <div class="flexCenter timerButtons">
+                            <div class="roundButton flexCenter playTimer" style="--round-button-height: 1.25em;">
+                                <span class="icon" style="--icon-url: url('Assets/play.svg'); --icon-size: 0.5em"></span>
+                            </div>
+                            <div class="roundButton flexCenter stopTimer" onclick="stopTimer()" style="--round-button-height: 1.25em;">
+                                <span class="icon" style="--icon-url: url('Assets/stop.svg'); --icon-size: 0.5em"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="roundButton flexCenter reverse" onclick="ResetBiomesValue('TopPlayer')" style="--round-button-height: 1.75em;">
+                        <span class="icon" style="--icon-url: url('Assets/reset.svg'); --icon-size: 0.85em"></span>
+                    </div>
                 </div>
+
+                <div id="TopRightSide" class="playSide">
+                    <div class="biomesRelative">
+                        <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueForestTopRight">
+                            <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+                        </div>
+                        <div class="biomes forestBiomes biomesActive" onclick="ToggleBiomes(this)">
+                            <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.6em"></span>
+                            <div id="biomesValueForestTopRight" class="biomesValueTop biomesValueOriginal">0</div>
+                            <div id="biomesValueForestBottomRight_Mirror" class="biomesValueTopOpponent biomesValueMirror">0</div>
+                        </div>
+                        <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueForestTopRight">
+                            <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+                        </div>
+                    </div>
+
+                    <div class="biomesRelative">
+                        <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueMountainTopRight">
+                            <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                        </div>
+                        <div class="biomes mountainBiomes biomesActive" onclick="ToggleBiomes(this)">
+                            <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.6em"></span>
+                            <div id="biomesValueMountainTopRight" class="biomesValueTop biomesValueOriginal">0</div>
+                            <div id="biomesValueMountainBottomRight_Mirror" class="biomesValueTopOpponent biomesValueMirror">0</div>
+                        </div>
+                        <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueMountainTopRight">
+                            <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                        </div>
+                    </div>
+
+                    <div class="biomesRelative">
+                        <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueWaterTopRight">
+                            <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                        </div>
+                        <div class="biomes waterBiomes biomesActive" onclick="ToggleBiomes(this)">
+                            <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.6em"></span>
+                            <div id="biomesValueWaterTopRight" class="biomesValueTop biomesValueOriginal">0</div>
+                            <div id="biomesValueWaterBottomRight_Mirror" class="biomesValueTopOpponent biomesValueMirror">0</div>
+                        </div>
+                        <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueWaterTopRight">
+                            <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sideButtons" style="--angle: z 180deg;">
+                    <div class="roundButton icon" onclick="Boost('TopRightSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.5em;"></div>
+                    <div class="roundButton icon" onclick="Boost('TopRightSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 1.5em;"></div>
+                    <div class="roundButton flexCenter" onclick="ToggleModal('modalTop', 'TopRightSide', true)" style="--round-button-height: 1.5em;">
+                        <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 0.75em"></span>
+                    </div>
+                </div>
+
             </div>
-
-            <div id="TopRightSide" class="playSide">
-                <div class="biomesRelative">
-                    <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueForestTopRight">
-                        <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
-                    </div>
-                    <div class="biomes forestBiomes biomesActive" onclick="ToggleBiomes(this)">
-                        <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.6em"></span>
-                        <div id="biomesValueForestTopRight" class="biomesValueTop biomesValueOriginal">0</div>
-                        <div id="biomesValueForestBottomRight_Mirror" class="biomesValueTopOpponent biomesValueMirror">0</div>
-                    </div>
-                    <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueForestTopRight">
-                        <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
-                    </div>
-                </div>
-
-                <div class="biomesRelative">
-                    <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueMountainTopRight">
-                        <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-                    </div>
-                    <div class="biomes mountainBiomes biomesActive" onclick="ToggleBiomes(this)">
-                        <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.6em"></span>
-                        <div id="biomesValueMountainTopRight" class="biomesValueTop biomesValueOriginal">0</div>
-                        <div id="biomesValueMountainBottomRight_Mirror" class="biomesValueTopOpponent biomesValueMirror">0</div>
-                    </div>
-                    <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueMountainTopRight">
-                        <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-                    </div>
-                </div>
-
-                <div class="biomesRelative">
-                    <div class="flexCenter fullWidth plusButtonTop changeValueContainer" data-target="biomesValueWaterTopRight">
-                        <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
-                    </div>
-                    <div class="biomes waterBiomes biomesActive" onclick="ToggleBiomes(this)">
-                        <span class="icon biomesIconTop hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.6em"></span>
-                        <div id="biomesValueWaterTopRight" class="biomesValueTop biomesValueOriginal">0</div>
-                        <div id="biomesValueWaterBottomRight_Mirror" class="biomesValueTopOpponent biomesValueMirror">0</div>
-                    </div>
-                    <div class="flexCenter fullWidth minusButtonTop changeValueContainer" data-target="biomesValueWaterTopRight">
-                        <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
-                    </div>
-                </div>
+        </div>
+        <div class="CenterBreak">
+            <div class="advanceDetailLeft">
+                <span class="icon flexCenter relative" style="--icon-url: url('Assets/hero_token.svg'); --icon-size: 1.5em">
+                    <span id="advanceTopLeftArrow" class="icon hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1em"></span>
+                    <span id="advanceBottomLeftArrow" class="icon hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1em"></span>
+                </span>
             </div>
-
-            <div class="sideButtons" style="--angle: z 180deg;">
-                <div class="roundButton icon" onclick="Boost('TopRightSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.5em;"></div>
-                <div class="roundButton icon" onclick="Boost('TopRightSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 1.5em;"></div>
-                <div class="roundButton flexCenter" onclick="ToggleModal('modalTop', 'TopRightSide', true)" style="--round-button-height: 1.5em;">
-                    <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 0.75em"></span>
-                </div>
+            <div class="line lineLeft"></div>
+            <div class="AlteredLogo" onclick="toggleSettings(true)"></div>
+            <div class="line lineRight"></div>
+            <div class="advanceDetailRight">
+                <span class="adaptiveColorText icon relative" style="--icon-url: url('Assets/companion_token.svg'); --icon-size: 1.5em">
+                    <span id="advanceTopRightArrow" class="icon reverseY hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1em"></span>
+                    <span id="advanceBottomRightArrow" class="icon reverseY hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1em"></span>
+                </span>
             </div>
+        </div>
+        <div id="BottomPlayer" class="playerSide">
+            <div class="biomesContainer">
 
+                <div class="sideButtons" style="--angle: z 0deg;">
+                    <div class="roundButton icon" onclick="Boost('BottomLeftSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.5em;"></div>
+                    <div class="roundButton icon" onclick="Boost('BottomLeftSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 1.5em;"></div>
+                    <div class="roundButton flexCenter" onclick="ToggleModal('modalBottom', 'BottomLeftSide', true)" style="--round-button-height: 1.5em;">
+                        <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 0.75em"></span>
+                    </div>
+                </div>
+
+                <div id="BottomLeftSide" class="playSide">
+                    <div class="biomesRelative">
+                        <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueForestBottomLeft">
+                            <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+                        </div>
+                        <div class="biomes forestBiomes biomesActive" onclick="ToggleBiomes(this)">
+                            <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.6em"></span>
+                            <div id="biomesValueForestBottomLeft" class="biomesValueBottom biomesValueOriginal">0</div>
+                            <div id="biomesValueForestTopLeft_Mirror" class="biomesValueBottomOpponent biomesValueMirror">0</div>
+                        </div>
+                        <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueForestBottomLeft">
+                            <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+                        </div>
+                    </div>
+
+                    <div class="biomesRelative">
+                        <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueMountainBottomLeft">
+                            <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                        </div>
+                        <div class="biomes mountainBiomes biomesActive" onclick="ToggleBiomes(this)">
+                            <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.6em"></span>
+                            <div id="biomesValueMountainBottomLeft" class="biomesValueBottom biomesValueOriginal">0</div>
+                            <div id="biomesValueMountainTopLeft_Mirror" class="biomesValueBottomOpponent biomesValueMirror">0</div>
+                        </div>
+                        <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueMountainBottomLeft">
+                            <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                        </div>
+                    </div>
+
+                    <div class="biomesRelative">
+                        <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueWaterBottomLeft">
+                            <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                        </div>
+                        <div class="biomes waterBiomes biomesActive" onclick="ToggleBiomes(this)">
+                            <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.6em"></span>
+                            <div id="biomesValueWaterBottomLeft" class="biomesValueBottom biomesValueOriginal">0</div>
+                            <div id="biomesValueWaterTopLeft_Mirror" class="biomesValueBottomOpponent biomesValueMirror">0</div>
+                        </div>
+                        <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueWaterBottomLeft">
+                            <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flexCenter column" style="row-gap: 0.45em">
+                    <div class="roundButton flexCenter" onclick="ResetBiomesValue('BottomPlayer')" style="--round-button-height: 1.75em;">
+                        <span class="icon" style="--icon-url: url('Assets/reset.svg'); --icon-size: 0.85em"></span>
+                    </div>
+                    <div class="flexCenter column timerContainer hidden">
+                        <div class="timerText adaptiveColorText">00 : 00</div>
+                        <div class="flexCenter timerButtons">
+                            <div class="roundButton flexCenter playTimer" style="--round-button-height: 1.25em;">
+                                <span class="icon" style="--icon-url: url('Assets/play.svg'); --icon-size: 0.5em"></span>
+                            </div>
+                            <div class="roundButton flexCenter stopTimer" onclick="stopTimer()" style="--round-button-height: 1.25em;">
+                                <span class="icon" style="--icon-url: url('Assets/stop.svg'); --icon-size: 0.5em"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="BottomRightSide" class="playSide">
+                    <div class="biomesRelative">
+                        <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueForestBottomRight">
+                            <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+                        </div>
+                        <div class="biomes forestBiomes biomesActive" onclick="ToggleBiomes(this)">
+                            <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.6em"></span>
+                            <div id="biomesValueForestBottomRight" class="biomesValueBottom biomesValueOriginal">0</div>
+                            <div id="biomesValueForestTopRight_Mirror" class="biomesValueBottomOpponent biomesValueMirror">0</div>
+                        </div>
+                        <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueForestBottomRight">
+                            <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+                        </div>
+                    </div>
+
+                    <div class="biomesRelative">
+                        <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueMountainBottomRight">
+                            <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                        </div>
+                        <div class="biomes mountainBiomes biomesActive" onclick="ToggleBiomes(this)">
+                            <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.6em"></span>
+                            <div id="biomesValueMountainBottomRight" class="biomesValueBottom biomesValueOriginal">0</div>
+                            <div id="biomesValueMountainTopRight_Mirror" class="biomesValueBottomOpponent biomesValueMirror">0</div>
+                        </div>
+                        <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueMountainBottomRight">
+                            <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                        </div>
+                    </div>
+
+                    <div class="biomesRelative">
+                        <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueWaterBottomRight">
+                            <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                        </div>
+                        <div class="biomes waterBiomes biomesActive" onclick="ToggleBiomes(this)">
+                            <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.6em"></span>
+                            <div id="biomesValueWaterBottomRight" class="biomesValueBottom biomesValueOriginal">0</div>
+                            <div id="biomesValueWaterTopRight_Mirror" class="biomesValueBottomOpponent biomesValueMirror">0</div>
+                        </div>
+                        <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueWaterBottomRight">
+                            <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sideButtons" style="--angle: z 0deg">
+                    <div class="roundButton icon" onclick="Boost('BottomRightSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.5em;"></div>
+                    <div class="roundButton icon" onclick="Boost('BottomRightSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 1.5em;"></div>
+                    <div class="roundButton flexCenter" onclick="ToggleModal('modalBottom', 'BottomRightSide', true)" style="--round-button-height: 1.5em;">
+                        <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 0.75em"></span>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-    <div class="CenterBreak">
-        <div class="advanceDetailLeft">
-            <span class="icon flexCenter relative" style="--icon-url: url('Assets/hero_token.svg'); --icon-size: 1.5em">
-                <span id="advanceTopLeftArrow" class="icon hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1em"></span>
-                <span id="advanceBottomLeftArrow" class="icon hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1em"></span>
-            </span>
-        </div>
-        <div class="line lineLeft"></div>
-        <div class="AlteredLogo" onclick="toggleSettings(true)"></div>
-        <div class="line lineRight"></div>
-        <div class="advanceDetailRight">
-            <span class="adaptiveColorText icon relative" style="--icon-url: url('Assets/companion_token.svg'); --icon-size: 1.5em">
-                <span id="advanceTopRightArrow" class="icon reverseY hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1em"></span>
-                <span id="advanceBottomRightArrow" class="icon reverseY hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1em"></span>
-            </span>
-        </div>
-    </div>
-    <div id="BottomPlayer" class="playerSide">
-        <div class="biomesContainer">
 
-            <div class="sideButtons" style="--angle: z 0deg;">
-                <div class="roundButton icon" onclick="Boost('BottomLeftSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.5em;"></div>
-                <div class="roundButton icon" onclick="Boost('BottomLeftSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 1.5em;"></div>
-                <div class="roundButton flexCenter" onclick="ToggleModal('modalBottom', 'BottomLeftSide', true)" style="--round-button-height: 1.5em;">
-                    <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 0.75em"></span>
-                </div>
-            </div>
-
-            <div id="BottomLeftSide" class="playSide">
-                <div class="biomesRelative">
-                    <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueForestBottomLeft">
-                        <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
+    <div id="TutorialContainer" class="fullSize flexCenter modal">
+        <span class="icon closeTutoButton" onclick="toggleTuto(false)" style="--icon-url: var(--cross-button); --icon-size: 1em"></span>
+        <div id="Tutorial" class="fullSize">
+            <div id="firstTutoCard" class="tutorialCard column">
+                <div class="fullWidth adaptiveColorText tutoCardTitle">1. Setup</div>
+                <div class="flexCenter fullWidth smallGap tutoCardContent">
+                    <div class="tutorialCardImg flexCenter">
+                        <img src="static/Assets/appIcon_256.png">
                     </div>
-                    <div class="biomes forestBiomes biomesActive" onclick="ToggleBiomes(this)">
-                        <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.6em"></span>
-                        <div id="biomesValueForestBottomLeft" class="biomesValueBottom biomesValueOriginal">0</div>
-                        <div id="biomesValueForestTopLeft_Mirror" class="biomesValueBottomOpponent biomesValueMirror">0</div>
-                    </div>
-                    <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueForestBottomLeft">
-                        <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
-                    </div>
-                </div>
-
-                <div class="biomesRelative">
-                    <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueMountainBottomLeft">
-                        <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-                    </div>
-                    <div class="biomes mountainBiomes biomesActive" onclick="ToggleBiomes(this)">
-                        <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.6em"></span>
-                        <div id="biomesValueMountainBottomLeft" class="biomesValueBottom biomesValueOriginal">0</div>
-                        <div id="biomesValueMountainTopLeft_Mirror" class="biomesValueBottomOpponent biomesValueMirror">0</div>
-                    </div>
-                    <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueMountainBottomLeft">
-                        <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-                    </div>
-                </div>
-
-                <div class="biomesRelative">
-                    <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueWaterBottomLeft">
-                        <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
-                    </div>
-                    <div class="biomes waterBiomes biomesActive" onclick="ToggleBiomes(this)">
-                        <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.6em"></span>
-                        <div id="biomesValueWaterBottomLeft" class="biomesValueBottom biomesValueOriginal">0</div>
-                        <div id="biomesValueWaterTopLeft_Mirror" class="biomesValueBottomOpponent biomesValueMirror">0</div>
-                    </div>
-                    <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueWaterBottomLeft">
-                        <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                    <div class="tutorialCardText adaptiveColorText">
+                        Put your phone in the middle of the board so that each player can access the biomes values of their expeditions.
                     </div>
                 </div>
             </div>
-
-            <div class="flexCenter column" style="row-gap: 0.45em">
-                <div class="roundButton flexCenter" onclick="ResetBiomesValue('BottomPlayer')" style="--round-button-height: 1.75em;">
-                    <span class="icon" style="--icon-url: url('Assets/reset.svg'); --icon-size: 0.85em"></span>
-                </div>
-                <div class="flexCenter column timerContainer hidden">
-                    <div class="timerText adaptiveColorText">00 : 00</div>
-                    <div class="flexCenter timerButtons">
-                        <div class="roundButton flexCenter playTimer" style="--round-button-height: 1.25em;">
-                            <span class="icon" style="--icon-url: url('Assets/play.svg'); --icon-size: 0.5em"></span>
-                        </div>
-                        <div class="roundButton flexCenter stopTimer" onclick="stopTimer()" style="--round-button-height: 1.25em;">
-                            <span class="icon" style="--icon-url: url('Assets/stop.svg'); --icon-size: 0.5em"></span>
+            <div class="tutorialCard column">
+                <div class="fullWidth adaptiveColorText tutoCardTitle">2. Biomes</div>
+                <div class="flexCenter fullWidth smallGap tutoCardContent">
+                    <div class="tutorialCardImg flexCenter">
+                        <div class="biomesRelative fullWidth">
+                            <div class="biomes mountainBiomes biomesActive tuto">
+                                <span class="icon biomesIconBottom visible" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 1.2em"></span>
+                                <div class="biomesValueBottom biomesValueOriginal biomesValueTuto biomesValueSuperior">2</div>
+                                <div class="biomesValueBottomOpponent biomesValueMirror biomesValueTuto">0</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div id="BottomRightSide" class="playSide">
-                <div class="biomesRelative">
-                    <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueForestBottomRight">
-                        <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
-                    </div>
-                    <div class="biomes forestBiomes biomesActive" onclick="ToggleBiomes(this)">
-                        <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/forestIcon.png'); --icon-size: 0.6em"></span>
-                        <div id="biomesValueForestBottomRight" class="biomesValueBottom biomesValueOriginal">0</div>
-                        <div id="biomesValueForestTopRight_Mirror" class="biomesValueBottomOpponent biomesValueMirror">0</div>
-                    </div>
-                    <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueForestBottomRight">
-                        <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_forest.svg')"></div>
-                    </div>
-                </div>
-
-                <div class="biomesRelative">
-                    <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueMountainBottomRight">
-                        <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-                    </div>
-                    <div class="biomes mountainBiomes biomesActive" onclick="ToggleBiomes(this)">
-                        <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 0.6em"></span>
-                        <div id="biomesValueMountainBottomRight" class="biomesValueBottom biomesValueOriginal">0</div>
-                        <div id="biomesValueMountainTopRight_Mirror" class="biomesValueBottomOpponent biomesValueMirror">0</div>
-                    </div>
-                    <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueMountainBottomRight">
-                        <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
-                    </div>
-                </div>
-
-                <div class="biomesRelative">
-                    <div class="flexCenter fullWidth plusButtonBottom changeValueContainer" data-target="biomesValueWaterBottomRight">
-                        <div class="changeValueButton" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
-                    </div>
-                    <div class="biomes waterBiomes biomesActive" onclick="ToggleBiomes(this)">
-                        <span class="icon biomesIconBottom hidden" style="--icon-url: url('Assets/waterIcon.png'); --icon-size: 0.6em"></span>
-                        <div id="biomesValueWaterBottomRight" class="biomesValueBottom biomesValueOriginal">0</div>
-                        <div id="biomesValueWaterTopRight_Mirror" class="biomesValueBottomOpponent biomesValueMirror">0</div>
-                    </div>
-                    <div class="flexCenter fullWidth minusButtonBottom changeValueContainer" data-target="biomesValueWaterBottomRight">
-                        <div class="changeValueButton reverse" style="--bg-arrow: url('Assets/upArrow_water.svg')"></div>
+                    <div class="tutorialCardText adaptiveColorText">
+                        In each biome, there are 2 values: <br>
+                        ● Bottom right : The value of your biomes. <br>
+                        ● Top left: Your opponent's value for the same biomes on the same expedition. <br>
+                        The value in yellow is the highest.
                     </div>
                 </div>
             </div>
-
-            <div class="sideButtons" style="--angle: z 0deg">
-                <div class="roundButton icon" onclick="Boost('BottomRightSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.5em;"></div>
-                <div class="roundButton icon" onclick="Boost('BottomRightSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 1.5em;"></div>
-                <div class="roundButton flexCenter" onclick="ToggleModal('modalBottom', 'BottomRightSide', true)" style="--round-button-height: 1.5em;">
-                    <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 0.75em"></span>
+            <div class="tutorialCard column">
+                <div class="fullWidth adaptiveColorText tutoCardTitle">3. Biomes Values</div>
+                <div class="flexCenter fullWidth smallGap tutoCardContent">
+                    <div class="tutorialCardImg flexCenter">
+                        <div class="biomesRelative fullWidth">
+                            <div class="flexCenter fullWidth changeValueContainer">
+                                <div class="changeValueButton tuto" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                            </div>
+                            <div class="biomes mountainBiomes biomesActive tuto">
+                                <span class="icon biomesIconBottom visible" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 1.2em"></span>
+                                <div class="biomesValueBottom biomesValueOriginal biomesValueTuto biomesValueSuperior">2</div>
+                                <div class="biomesValueBottomOpponent biomesValueMirror biomesValueTuto">0</div>
+                            </div>
+                            <div class="flexCenter fullWidth changeValueContainer">
+                                <div class="changeValueButton reverse tuto" style="--bg-arrow: url('Assets/upArrow_mountain.svg')"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tutorialCardText adaptiveColorText">
+                        You can use the arrows around the biomes to increase or decrease their values by 1. <br>
+                        For example, if one of your characters is removed from the board, you can manually decrease the values of your biomes to remove the character's stats.
+                    </div>
                 </div>
             </div>
-
+            <div class="tutorialCard column">
+                <div class="fullWidth adaptiveColorText tutoCardTitle">4. Boosts</div>
+                <div class="flexCenter fullWidth smallGap tutoCardContent">
+                    <div class="tutorialCardImg flexSpaceAround column">
+                        <div class="roundButton icon" style="--icon-url: url('Assets/boost.webp'); --icon-size: 3.5em;"></div>
+                        <div class="roundButton icon" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 3.5em;"></div>
+                    </div>
+                    <div class="tutorialCardText adaptiveColorText">
+                        On each of your expeditions you have access to these buttons: <br>
+                        ● +1 increases all biomes by 1 <br>
+                        ● -1 decreases all biomes by 1
+                    </div>
+                </div>
+            </div>
+            <div class="tutorialCard column">
+                <div class="fullWidth adaptiveColorText tutoCardTitle">5. Add a character</div>
+                <div class="flexCenter fullWidth smallGap tutoCardContent">
+                    <div class="tutorialCardImg flexSpaceAround column">
+                        <div class="roundButton flexCenter" style="--round-button-height: 4.5em;">
+                            <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 2.75em"></span>
+                        </div>
+                    </div>
+                    <div class="tutorialCardText adaptiveColorText">
+                        When you play a new character, you can click on this button on the desired expedition side. <br>
+                        A window opens where you can choose the values for each of your character's biomes. Once confirmed, these values will be added to your current biomes.
+                    </div>
+                </div>
+            </div>
+            <div class="tutorialCard column">
+                <div class="fullWidth adaptiveColorText tutoCardTitle">6. Actives biomes</div>
+                <div class="flexCenter fullWidth smallGap tutoCardContent">
+                    <div class="tutorialCardImg flexCenter">
+                        <div class="biomesRelative fullWidth">
+                            <div class="biomes mountainBiomes biomesInactive tuto">
+                                <span class="icon biomesIconBottom visible" style="--icon-url: url('Assets/mountainIcon.png'); --icon-size: 1.2em"></span>
+                                <div class="biomesValueBottom biomesValueOriginal biomesValueTuto biomesValueSuperior">2</div>
+                                <div class="biomesValueBottomOpponent biomesValueMirror biomesValueTuto">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tutorialCardText adaptiveColorText">
+                        When one of your tokens moves forward, the exploration card it moves onto defines the new biomes. Biomes that are not on this card can be clicked to disable them.
+                    </div>
+                </div>
+            </div>
+            <div class="tutorialCard column">
+                <div class="fullWidth adaptiveColorText tutoCardTitle">7. Tokens indications</div>
+                <div class="flexCenter fullWidth smallGap tutoCardContent">
+                    <div class="tutorialCardImg flexCenter">
+                        <span class="icon flexCenter relative" style="--icon-url: url('Assets/hero_token.svg'); --icon-size: 3.5em">
+                            <span id="advanceArrowTutoTop" class="icon" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 2em"></span>
+                            <span id="advanceArrowTutoBottom" class="icon" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 2em"></span>
+                        </span>
+                    </div>
+                    <div class="tutorialCardText adaptiveColorText">
+                        On the 2 expeditions, you have real-time status of the corresponding tokens. <br>
+                        ● If no one is advancing, there are no arrows. <br>
+                        ● If you should advance, the arrow on your side will be visible, and the same for your opponent. <br>
+                        ● If you both have to advance, both arrows are visible. <br>
+                        This system takes into consideration the state of the biomes.
+                    </div>
+                </div>
+            </div>
+            <div class="tutorialCard column">
+                <div class="fullWidth adaptiveColorText tutoCardTitle">8. Settings</div>
+                <div class="flexCenter fullWidth smallGap tutoCardContent">
+                    <div class="tutorialCardImg flexCenter">
+                        <div class="AlteredLogo tuto"></div>
+                    </div>
+                    <div class="tutorialCardText adaptiveColorText">
+                        You can click on this button in the center of the screen to open the settings. <br>
+                        You can choose your preferred theme.
+                        You can also enable a timer, a solo mode and zoom based on your preferences.
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
 </div>
 
