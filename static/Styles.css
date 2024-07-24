@@ -214,16 +214,16 @@ body {
 
 .biomesIconTop {
     position: absolute;
-    top: 25%;
-    left: 80%;
+    top: 23%;
+    left: 82%;
     transform: translate(-50%, -50%) scale(-1,-1);
     -webkit-transform: translate(-50%, -50%) scale(-1,-1);
 }
 
 .biomesIconBottom {
     position: absolute;
-    bottom: 25%;
-    right: 80%;
+    bottom: 23%;
+    right: 82%;
     transform: translate(50%, 50%);
     -webkit-transform: translate(50%, 50%);
 }
