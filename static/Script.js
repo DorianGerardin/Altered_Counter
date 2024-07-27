@@ -436,7 +436,7 @@ function ToggleBiomes(biomesNode) {
     }
 }
 
-function ValidateCharacter(modalSideId) {
+function ValidateCharacter(modalSideId, multiplier = 1) {
     if(!currentPlaySideAddingCharacter) {
         return
     }
@@ -449,7 +449,7 @@ function ValidateCharacter(modalSideId) {
     })
     const allBiomesValueOriginal = playSideNode.querySelectorAll(".biomesValueOriginal")
     for (let i = 0; i < allBiomesValueOriginal.length; i++) {
-        AddBiomesValue(allBiomesValueOriginal[i], addValues[i])
+        AddBiomesValue(allBiomesValueOriginal[i], multiplier * addValues[i])
     }
     ToggleModal(modalSideId, '', false)
 }
@@ -459,8 +459,12 @@ function GetOpponentNode(biomesValueNode) {
 }
 
 function SetBiomesValue(biomesValueNode, newValue) {
-    if(newValue > 99 || newValue < 0) {
-        return
+    if(newValue > 99) {
+        newValue = 99
+    }
+
+    if(newValue < 0) {
+        newValue = 0
     }
 
     if(!biomesValueNode.classList.contains("modalValue")) {

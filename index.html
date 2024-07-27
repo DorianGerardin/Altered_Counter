@@ -135,7 +135,7 @@
             <div class="flexCenter row" style="--angle: z 0deg; column-gap: 1em; width: 45%">
                 <div class="roundButton icon" onclick="Boost('soloLeftSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 2em;"></div>
                 <div class="roundButton flexCenter" onclick="ToggleModal('modalBottom', 'soloLeftSide', true)" style="--round-button-height: 2em;">
-                    <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 1em"></span>
+                    <span class="icon" style="--icon-url: url('Assets/characterIcon.svg'); --icon-size: 1.5em"></span>
                 </div>
                 <div class="roundButton icon" onclick="Boost('soloLeftSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 2em;"></div>
             </div>
@@ -147,7 +147,7 @@
             <div class="flexCenter row" style="--angle: z 0deg; column-gap: 1em; width: 45%">
                 <div class="roundButton icon" onclick="Boost('soloRightSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 2em;"></div>
                 <div class="roundButton flexCenter" onclick="ToggleModal('modalBottom', 'soloRightSide', true)" style="--round-button-height: 2em;">
-                    <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 1em"></span>
+                    <span class="icon" style="--icon-url: url('Assets/characterIcon.svg'); --icon-size: 1.5em"></span>
                 </div>
                 <div class="roundButton icon" onclick="Boost('soloRightSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 2em;"></div>
             </div>
@@ -157,8 +157,11 @@
     <div id="AddCharacterModal" class="flexCenter modal">
         <div id="modalTop" class="modalContainer hidden">
             <div class="toggleModalButtonsContainer">
+                <div class="roundButton flexCenter" onclick="ValidateCharacter('modalTop', -1)" style="--round-button-height: 1.25em; margin-right:0.5em">
+                    <span class="icon reverse" style="--icon-url: url('Assets/character-remove.svg'); --icon-size: 0.75em"></span>
+                </div>
                 <div class="roundButton flexCenter" onclick="ValidateCharacter('modalTop')" style="--round-button-height: 1.25em; margin-right:0.5em">
-                    <span class="icon reverse" style="--icon-url: url('Assets/check.svg'); --icon-size: 0.75em"></span>
+                    <span class="icon reverse" style="--icon-url: url('Assets/character-add.svg'); --icon-size: 0.75em"></span>
                 </div>
                 <div class="roundButton red flexCenter" onclick="ToggleModal('modalTop', '', false)" style="--round-button-height: 1.25em; margin-right:0.5em">
                     <span class="icon reverse" style="--icon-url: url('Assets/cross_dark.svg'); --icon-size: 0.5em"></span>
@@ -250,7 +253,10 @@
                     <span class="icon" style="--icon-url: url('Assets/cross_dark.svg'); --icon-size: 0.5em"></span>
                 </div>
                 <div class="roundButton flexCenter" onclick="ValidateCharacter('modalBottom')" style="--round-button-height: 1.25em; margin-left:0.5em">
-                    <span class="icon" style="--icon-url: url('Assets/check.svg'); --icon-size: 0.75em"></span>
+                    <span class="icon" style="--icon-url: url('Assets/character-add.svg'); --icon-size: 0.75em"></span>
+                </div>
+                <div class="roundButton flexCenter" onclick="ValidateCharacter('modalBottom', -1)" style="--round-button-height: 1.25em; margin-left:0.5em">
+                    <span class="icon" style="--icon-url: url('Assets/character-remove.svg'); --icon-size: 0.75em"></span>
                 </div>
             </div>
         </div>
@@ -317,7 +323,7 @@
                     <div class="roundButton icon" onclick="Boost('TopLeftSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.5em;"></div>
                     <div class="roundButton icon" onclick="Boost('TopLeftSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 1.5em;"></div>
                     <div class="roundButton flexCenter" onclick="ToggleModal('modalTop', 'TopLeftSide', true)" style="--round-button-height: 1.5em;">
-                        <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 0.75em"></span>
+                        <span class="icon" style="--icon-url: url('Assets/characterIcon.svg'); --icon-size: 1.15em"></span>
                     </div>
                 </div>
 
@@ -431,7 +437,7 @@
                     <div class="roundButton icon" onclick="Boost('TopRightSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.5em;"></div>
                     <div class="roundButton icon" onclick="Boost('TopRightSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 1.5em;"></div>
                     <div class="roundButton flexCenter" onclick="ToggleModal('modalTop', 'TopRightSide', true)" style="--round-button-height: 1.5em;">
-                        <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 0.75em"></span>
+                        <span class="icon" style="--icon-url: url('Assets/characterIcon.svg'); --icon-size: 1.15em"></span>
                     </div>
                 </div>
 
@@ -440,8 +446,8 @@
         <div class="CenterBreak">
             <div class="advanceDetailLeft">
                 <span class="icon flexCenter relative" style="--icon-url: url('Assets/hero_token.svg'); --icon-size: 1.5em">
-                    <span id="advanceTopLeftArrow" class="icon hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1em"></span>
-                    <span id="advanceBottomLeftArrow" class="icon hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1em"></span>
+                    <span id="advanceTopLeftArrow" class="icon hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1.2em"></span>
+                    <span id="advanceBottomLeftArrow" class="icon hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1.2em"></span>
                 </span>
             </div>
             <div class="line lineLeft"></div>
@@ -449,8 +455,8 @@
             <div class="line lineRight"></div>
             <div class="advanceDetailRight">
                 <span class="adaptiveColorText icon relative" style="--icon-url: url('Assets/companion_token.svg'); --icon-size: 1.5em">
-                    <span id="advanceTopRightArrow" class="icon reverseY hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1em"></span>
-                    <span id="advanceBottomRightArrow" class="icon reverseY hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1em"></span>
+                    <span id="advanceTopRightArrow" class="icon reverseY hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1.2em"></span>
+                    <span id="advanceBottomRightArrow" class="icon reverseY hidden" style="--icon-url: url('Assets/advanceArrow.svg'); --icon-size: 1.2em"></span>
                 </span>
             </div>
         </div>
@@ -461,7 +467,7 @@
                     <div class="roundButton icon" onclick="Boost('BottomLeftSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.5em;"></div>
                     <div class="roundButton icon" onclick="Boost('BottomLeftSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 1.5em;"></div>
                     <div class="roundButton flexCenter" onclick="ToggleModal('modalBottom', 'BottomLeftSide', true)" style="--round-button-height: 1.5em;">
-                        <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 0.75em"></span>
+                        <span class="icon" style="--icon-url: url('Assets/characterIcon.svg'); --icon-size: 1.15em"></span>
                     </div>
                 </div>
 
@@ -574,7 +580,7 @@
                     <div class="roundButton icon" onclick="Boost('BottomRightSide', 1)" style="--icon-url: url('Assets/boost.webp'); --icon-size: 1.5em;"></div>
                     <div class="roundButton icon" onclick="Boost('BottomRightSide', -1)" style="--icon-url: url('Assets/boostNegate.webp'); --icon-size: 1.5em;"></div>
                     <div class="roundButton flexCenter" onclick="ToggleModal('modalBottom', 'BottomRightSide', true)" style="--round-button-height: 1.5em;">
-                        <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 0.75em"></span>
+                        <span class="icon" style="--icon-url: url('Assets/characterIcon.svg'); --icon-size: 1.15em"></span>
                     </div>
                 </div>
 
@@ -655,16 +661,16 @@
                 </div>
             </div>
             <div class="tutorialCard column">
-                <div class="fullWidth adaptiveColorText tutoCardTitle">5. Add a character</div>
+                <div class="fullWidth adaptiveColorText tutoCardTitle">5. Add/Remove a character</div>
                 <div class="flexCenter fullWidth smallGap tutoCardContent">
                     <div class="tutorialCardImg flexSpaceAround column">
                         <div class="roundButton flexCenter" style="--round-button-height: 4.5em;">
-                            <span class="icon" style="--icon-url: url('Assets/addCharacterIcon.svg'); --icon-size: 2.75em"></span>
+                            <span class="icon" style="--icon-url: url('Assets/characterIcon.svg'); --icon-size: 2.75em"></span>
                         </div>
                     </div>
                     <div class="tutorialCardText adaptiveColorText">
                         When you play a new character, you can click on this button on the desired expedition side. <br>
-                        A window opens where you can choose the values for each of your character's biomes. Once confirmed, these values will be added to your current biomes.
+                        A window opens where you can choose the values for each of your character's biomes. You can then choose to add or remove these values to your current biomes.
                     </div>
                 </div>
             </div>
